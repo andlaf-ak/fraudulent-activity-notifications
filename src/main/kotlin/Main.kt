@@ -31,8 +31,7 @@ fun median(values: Array<Int>): Int {
     }
 }
 
-fun calculateNumberOfNotices(values: Array<Int>, pastDaysNumber: Int): Int {
-    val lastIndex = values.size-1
+fun calculateNumberOfNotices(values: Array<Int>, lastIndex: Int, pastDaysNumber: Int): Int {
     val startIndex = lastIndex - pastDaysNumber
     if (startIndex >= 0) {
         val m = median(values.sliceArray(startIndex..lastIndex-1))
