@@ -14,7 +14,7 @@ class FraudulentActivityNotificationsTest {
 
     @Test
     fun shouldReturnTheNumberOfNotificationsForInterval() {
-        val expenditure = arrayOf(10, 20, 30, 40)
+        val expenditure = listOf(10, 20, 30, 40)
         val pastDaysNumber = 3
         assertEquals(1, calculateNumberOfNotices(expenditure, 3, pastDaysNumber))
     }

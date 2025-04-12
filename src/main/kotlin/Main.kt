@@ -15,29 +15,29 @@ import kotlin.io.*
 import kotlin.jvm.*
 import kotlin.jvm.functions.*
 import kotlin.jvm.internal.*
+import kotlin.math.exp
 import kotlin.ranges.*
 import kotlin.sequences.*
 import kotlin.text.*
 
-fun medianForSubArray(values: Array<Int>, startIndex: Int, endIndex: Int): Double {
-    val sortedValues = values.sorted()
-    if (sortedValues.isEmpty()){
+fun medianForSubArray(values: List<Int>, startIndex: Int, endIndex: Int): Double {
+    if (values.isEmpty()){
         return 0.0
     }
     val size = endIndex - startIndex + 1
     return if (size % 2 == 0) {
-        (sortedValues[startIndex + size / 2-1] + sortedValues[startIndex + size/2])/2.0
+        (values[startIndex + size / 2-1] + values[startIndex + size/2])/2.0
 
     } else {
-        sortedValues[startIndex + size/2].toDouble()
+        values[startIndex + size/2].toDouble()
     }
 }
 
-fun median(values: Array<Int>): Double {
+fun median(values: List<Int>): Double {
     return medianForSubArray(values, 0, values.size-1)
 }
 
-fun calculateNumberOfNotices(values: Array<Int>, lastIndex: Int, pastDaysNumber: Int): Int {
+fun calculateNumberOfNotices(values: List<Int>, lastIndex: Int, pastDaysNumber: Int): Int {
     val startIndex = lastIndex - pastDaysNumber
     if (startIndex >= 0) {
         val m = medianForSubArray(values, startIndex, lastIndex - 1)
@@ -50,11 +50,13 @@ fun calculateNumberOfNotices(values: Array<Int>, lastIndex: Int, pastDaysNumber:
 
 fun activityNotifications(expenditure: Array<Int>, d: Int): Int {
     var c = 0
-    var startIndex = expenditure.size-1
-    while (startIndex - d >= 0) {
-       c += calculateNumberOfNotices(expenditure, startIndex, d)
-        startIndex--
-    }
+    var startIndex = 0
+    var valueToCheckIndex = d
+    var endIndex = valueToCheckIndex - 1
+    var sublist = mutableListOf(expenditure.slice(startIndex..endIndex).sorted())
+//    while (endIndex < expenditure.size) {
+//        val m = median(sublist.toTypedArray())
+//    }
     return c
 }
 
