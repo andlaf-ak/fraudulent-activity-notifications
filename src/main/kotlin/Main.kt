@@ -50,10 +50,9 @@ fun calculateNumberOfNotices(values: List<Int>, lastIndex: Int, pastDaysNumber: 
 
 fun activityNotifications(expenditure: Array<Int>, d: Int): Int {
     var c = 0
-    var startIndex = 0
     var valueToCheckIndex = d
     var endIndex = valueToCheckIndex - 1
-    var sublist = expenditure.slice(startIndex..endIndex).sorted().toMutableList()
+    var sublist = expenditure.slice(0..endIndex).sorted().toMutableList()
     while (valueToCheckIndex < expenditure.size) {
         val m = median(sublist)
         val valueToCheck = expenditure[valueToCheckIndex]
@@ -61,7 +60,6 @@ fun activityNotifications(expenditure: Array<Int>, d: Int): Int {
             ++c
         }
         sublist.removeFirst()
-        ++startIndex
         ++endIndex
         insertInSortedList(sublist, expenditure[endIndex])
         ++valueToCheckIndex
