@@ -33,6 +33,10 @@ fun activityNotifications(expenditure: Array<Int>, d: Int): Int {
     return -1
 }
 
+fun median(values: Array<Int>): Int {
+    return -999
+}
+
 fun main(args: Array<String>) {
     val first_multiple_input = readLine()!!.trimEnd().split(" ")
 
