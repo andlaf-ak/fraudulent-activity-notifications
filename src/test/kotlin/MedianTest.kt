@@ -14,4 +14,10 @@ class MedianTest {
         val values = arrayOf(10)
         assertEquals(10, median(values))
     }
+
+    @Test
+    fun shouldCalculateMedianForArrayWithTwoElements() {
+        val values = arrayOf(10, 20)
+        assertEquals(15, median(values))
+    }
 }

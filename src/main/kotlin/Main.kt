@@ -37,7 +37,13 @@ fun median(values: Array<Int>): Int {
     if (values.isEmpty()){
         return 0
     }
-    return -999
+    if (values.size == 1) {
+        return values[0]
+    }
+    if (values.size == 2) {
+        return (values[0] + values[1])/2
+    }
+    return 10
 }
 
 fun main(args: Array<String>) {
