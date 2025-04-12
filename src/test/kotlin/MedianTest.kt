@@ -1,4 +1,5 @@
 import com.andrealaforgia.median
+import com.andrealaforgia.medianForSubArray
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
 
@@ -37,5 +38,17 @@ class MedianTest {
     fun shouldCalculateMedianForArrayWithEvenNumberOfElements() {
         val values = arrayOf(11, 17, 19, 21, 23, 29)
         assertEquals((19+21)/2, median(values))
+    }
+
+    @Test
+    fun shouldCalculateMedianForSubarrayWithOddNumberOfElements() {
+        val values = arrayOf(11, 17, 19, 21, 23, 29)
+        assertEquals(17, medianForSubArray(values, 0, 2))
+    }
+
+    @Test
+    fun shouldCalculateMedianForSubarrayWithEveNumberOfElements() {
+        val values = arrayOf(11, 17, 19, 21, 23, 29)
+        assertEquals((17+19)/2, medianForSubArray(values, 0, 3))
     }
 }

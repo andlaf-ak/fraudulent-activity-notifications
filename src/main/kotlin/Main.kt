@@ -19,16 +19,21 @@ import kotlin.ranges.*
 import kotlin.sequences.*
 import kotlin.text.*
 
-fun median(values: Array<Int>): Int {
+fun medianForSubArray(values: Array<Int>, startIndex: Int, endIndex: Int): Int {
     if (values.isEmpty()){
         return 0
     }
-    return if (values.size % 2 == 0) {
-        (values[values.size / 2-1] + values[values.size/2])/2
+    val size = endIndex - startIndex + 1
+    return if (size % 2 == 0) {
+        (values[startIndex + size / 2-1] + values[startIndex + size/2])/2
 
     } else {
-        values[values.size/2]
+        values[startIndex + size/2]
     }
+}
+
+fun median(values: Array<Int>): Int {
+    return medianForSubArray(values, 0, values.size-1)
 }
 
 fun calculateNumberOfNotices(values: Array<Int>, lastIndex: Int, pastDaysNumber: Int): Int {
