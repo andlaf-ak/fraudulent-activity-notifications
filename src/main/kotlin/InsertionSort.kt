@@ -1,8 +1,10 @@
 package com.andrealaforgia
 
-fun insertInSortedArray(values: MutableList<Int>, value: Int) {
-    values.add(values[4])
-    values[4] = values[3]
-    values[3] = values[2]
-    values[2] = 3
+fun insertInSortedList(items: MutableList<Int>, newElement: Int) {
+    val index = items.indexOfFirst { it >= newElement }
+    if (index == -1) {
+        items.add(newElement)
+    } else {
+        items.add(index, newElement)
+    }
 }
