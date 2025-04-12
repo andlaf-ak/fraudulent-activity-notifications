@@ -19,21 +19,21 @@ import kotlin.ranges.*
 import kotlin.sequences.*
 import kotlin.text.*
 
-fun medianForSubArray(values: Array<Int>, startIndex: Int, endIndex: Int): Int {
+fun medianForSubArray(values: Array<Int>, startIndex: Int, endIndex: Int): Double {
     val sortedValues = values.sorted()
     if (sortedValues.isEmpty()){
-        return 0
+        return 0.0
     }
     val size = endIndex - startIndex + 1
     return if (size % 2 == 0) {
-        (sortedValues[startIndex + size / 2-1] + sortedValues[startIndex + size/2])/2
+        (sortedValues[startIndex + size / 2-1] + sortedValues[startIndex + size/2])/2.0
 
     } else {
-        sortedValues[startIndex + size/2]
+        sortedValues[startIndex + size/2].toDouble()
     }
 }
 
-fun median(values: Array<Int>): Int {
+fun median(values: Array<Int>): Double {
     return medianForSubArray(values, 0, values.size-1)
 }
 
