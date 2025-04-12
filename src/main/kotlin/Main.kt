@@ -12,21 +12,16 @@ fun removeItemFromSortedList(sortedList: MutableList<Int>, item: Int) {
     }
 }
 
-fun median(values: List<Int>, startIndex: Int, endIndex: Int): Double {
+fun median(values: List<Int>): Double {
     if (values.isEmpty()){
         return 0.0
     }
-    val size = endIndex - startIndex + 1
-    return if (size % 2 == 0) {
-        (values[startIndex + size / 2-1] + values[startIndex + size/2])/2.0
+    return if (values.size % 2 == 0) {
+        (values[values.size / 2-1] + values[values.size/2])/2.0
 
     } else {
-        values[startIndex + size/2].toDouble()
+        values[values.size/2].toDouble()
     }
-}
-
-fun median(values: List<Int>): Double {
-    return median(values, 0, values.size-1)
 }
 
 fun activityNotifications(expenditure: Array<Int>, d: Int): Int {
