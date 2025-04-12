@@ -53,10 +53,19 @@ fun activityNotifications(expenditure: Array<Int>, d: Int): Int {
     var startIndex = 0
     var valueToCheckIndex = d
     var endIndex = valueToCheckIndex - 1
-    var sublist = mutableListOf(expenditure.slice(startIndex..endIndex).sorted())
-//    while (endIndex < expenditure.size) {
-//        val m = median(sublist.toTypedArray())
-//    }
+    var sublist = expenditure.slice(startIndex..endIndex).sorted().toMutableList()
+    while (valueToCheckIndex < expenditure.size) {
+        val m = median(sublist)
+        val valueToCheck = expenditure[valueToCheckIndex]
+        if (valueToCheck >= 2*m) {
+            ++c
+        }
+        sublist.removeFirst()
+        ++startIndex
+        ++endIndex
+        insertInSortedList(sublist, expenditure[endIndex])
+        ++valueToCheckIndex
+    }
     return c
 }
 
