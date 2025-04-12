@@ -30,6 +30,7 @@ import kotlin.text.*
 
 fun activityNotifications(expenditure: Array<Int>, d: Int): Int {
     // Write your code here
+    return -1
 }
 
 fun main(args: Array<String>) {
