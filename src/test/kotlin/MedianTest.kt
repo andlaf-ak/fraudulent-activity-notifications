@@ -26,4 +26,16 @@ class MedianTest {
         val values = arrayOf(11, 17, 19)
         assertEquals(17, median(values))
     }
+
+    @Test
+    fun shouldCalculateMedianForArrayWithOddNumberOfElements() {
+        val values = arrayOf(11, 17, 19, 21, 23, 29, 31)
+        assertEquals(21, median(values))
+    }
+
+    @Test
+    fun shouldCalculateMedianForArrayWithEvenNumberOfElements() {
+        val values = arrayOf(11, 17, 19, 21, 23, 29)
+        assertEquals((19+21)/2, median(values))
+    }
 }
