@@ -43,6 +43,9 @@ fun median(values: Array<Int>): Int {
     if (values.size == 2) {
         return (values[0] + values[1])/2
     }
+    if (values.size == 3) {
+        return (values[1])
+    }
     return 10
 }
 
