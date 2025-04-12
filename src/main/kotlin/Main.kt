@@ -1,25 +1,5 @@
 package com.andrealaforgia
 
-import java.io.*
-import java.math.*
-import java.security.*
-import java.text.*
-import java.util.*
-import java.util.concurrent.*
-import java.util.function.*
-import java.util.regex.*
-import java.util.stream.*
-import kotlin.collections.*
-import kotlin.comparisons.*
-import kotlin.io.*
-import kotlin.jvm.*
-import kotlin.jvm.functions.*
-import kotlin.jvm.internal.*
-import kotlin.math.exp
-import kotlin.ranges.*
-import kotlin.sequences.*
-import kotlin.text.*
-
 fun insertInSortedList(items: MutableList<Int>, newElement: Int) {
     val index = items.binarySearch(newElement).let { if (it < 0) -it - 1 else it }
     items.add(index, newElement)
@@ -54,20 +34,20 @@ fun calculateNumberOfNotices(values: List<Int>, lastIndex: Int, pastDaysNumber: 
 }
 
 fun activityNotifications(expenditure: Array<Int>, d: Int): Int {
-    var c = 0
+    var numberOfNotifications = 0
     var valueToCheckIndex = d
     var sublist = expenditure.slice(0..valueToCheckIndex-1).sorted().toMutableList()
     while (valueToCheckIndex < expenditure.size) {
         val m = median(sublist)
         val valueToCheck = expenditure[valueToCheckIndex]
         if (valueToCheck >= 2*m) {
-            ++c
+            ++numberOfNotifications
         }
         sublist.removeFirst()
         insertInSortedList(sublist, expenditure[valueToCheckIndex-1])
         ++valueToCheckIndex
     }
-    return c
+    return numberOfNotifications
 }
 
 fun main(args: Array<String>) {
