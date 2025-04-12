@@ -34,7 +34,7 @@ fun activityNotifications(expenditure: Array<Int>, d: Int): Int {
 }
 
 fun median(values: Array<Int>): Int {
-    return -999
+    return 0
 }
 
 fun main(args: Array<String>) {
