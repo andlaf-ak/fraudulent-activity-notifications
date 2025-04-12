@@ -5,6 +5,13 @@ fun insertInSortedList(items: MutableList<Int>, newElement: Int) {
     items.add(index, newElement)
 }
 
+fun removeItemFromSortedList(sortedList: MutableList<Int>, item: Int) {
+    val index = sortedList.binarySearch(item)
+    if (index >= 0) {
+        sortedList.removeAt(index)
+    }
+}
+
 fun medianForSubArray(values: List<Int>, startIndex: Int, endIndex: Int): Double {
     if (values.isEmpty()){
         return 0.0
@@ -35,16 +42,19 @@ fun calculateNumberOfNotices(values: List<Int>, lastIndex: Int, pastDaysNumber: 
 
 fun activityNotifications(expenditure: Array<Int>, d: Int): Int {
     var numberOfNotifications = 0
+    var startIndex = 0
     var valueToCheckIndex = d
-    var sublist = expenditure.slice(0..valueToCheckIndex-1).sorted().toMutableList()
+    var sublist = expenditure.slice(startIndex..valueToCheckIndex-1).sorted().toMutableList()
     while (valueToCheckIndex < expenditure.size) {
         val m = median(sublist)
         val valueToCheck = expenditure[valueToCheckIndex]
+//        println("$sublist m=$m vtoci=$valueToCheckIndex vtoc=$valueToCheck")
         if (valueToCheck >= 2*m) {
             ++numberOfNotifications
         }
-        sublist.removeFirst()
-        insertInSortedList(sublist, expenditure[valueToCheckIndex-1])
+        removeItemFromSortedList(sublist, expenditure[startIndex])
+        insertInSortedList(sublist, expenditure[valueToCheckIndex])
+        ++startIndex
         ++valueToCheckIndex
     }
     return numberOfNotifications
