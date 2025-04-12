@@ -1,7 +1,6 @@
 import com.andrealaforgia.activityNotifications
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
-import kotlin.math.exp
 
 class FraudulentActivityNotificationsTest {
     @Test
