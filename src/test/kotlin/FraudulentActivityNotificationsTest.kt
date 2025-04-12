@@ -1,5 +1,4 @@
 import com.andrealaforgia.activityNotifications
-import com.andrealaforgia.calculateNumberOfNotices
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 import java.io.File
@@ -11,13 +10,6 @@ class FraudulentActivityNotificationsTest {
         val trailingDays = 3
         val activityNotificationsCount = activityNotifications(expenditure, trailingDays)
         assertEquals(1, activityNotificationsCount)
-    }
-
-    @Test
-    fun shouldReturnTheNumberOfNotificationsForInterval() {
-        val expenditure = listOf(10, 20, 30, 40)
-        val pastDaysNumber = 3
-        assertEquals(1, calculateNumberOfNotices(expenditure, 3, pastDaysNumber))
     }
 
     @Test

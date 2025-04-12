@@ -12,7 +12,7 @@ fun removeItemFromSortedList(sortedList: MutableList<Int>, item: Int) {
     }
 }
 
-fun medianForSubArray(values: List<Int>, startIndex: Int, endIndex: Int): Double {
+fun median(values: List<Int>, startIndex: Int, endIndex: Int): Double {
     if (values.isEmpty()){
         return 0.0
     }
@@ -26,18 +26,7 @@ fun medianForSubArray(values: List<Int>, startIndex: Int, endIndex: Int): Double
 }
 
 fun median(values: List<Int>): Double {
-    return medianForSubArray(values, 0, values.size-1)
-}
-
-fun calculateNumberOfNotices(values: List<Int>, lastIndex: Int, pastDaysNumber: Int): Int {
-    val startIndex = lastIndex - pastDaysNumber
-    if (startIndex >= 0) {
-        val m = medianForSubArray(values, startIndex, lastIndex - 1)
-        if (values[lastIndex] >= 2 * m) {
-            return 1
-        }
-    }
-    return 0
+    return median(values, 0, values.size-1)
 }
 
 fun activityNotifications(expenditure: Array<Int>, d: Int): Int {
@@ -48,7 +37,6 @@ fun activityNotifications(expenditure: Array<Int>, d: Int): Int {
     while (valueToCheckIndex < expenditure.size) {
         val m = median(sublist)
         val valueToCheck = expenditure[valueToCheckIndex]
-//        println("$sublist m=$m vtoci=$valueToCheckIndex vtoc=$valueToCheck")
         if (valueToCheck >= 2*m) {
             ++numberOfNotifications
         }
