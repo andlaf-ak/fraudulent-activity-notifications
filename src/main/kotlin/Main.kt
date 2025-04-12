@@ -19,39 +19,37 @@ import kotlin.ranges.*
 import kotlin.sequences.*
 import kotlin.text.*
 
-/*
- * Complete the 'activityNotifications' function below.
- *
- * The function is expected to return an INTEGER.
- * The function accepts following parameters:
- *  1. INTEGER_ARRAY expenditure
- *  2. INTEGER d
- */
-
-fun activityNotifications(expenditure: Array<Int>, d: Int): Int {
-    // Write your code here
-    return -1
-}
-
 fun median(values: Array<Int>): Int {
     if (values.isEmpty()){
         return 0
     }
-    if (values.size == 1) {
-        return values[0]
-    }
-    if (values.size == 2) {
-        return (values[0] + values[1])/2
-    }
-    if (values.size == 3) {
-        return (values[1])
-    }
-    if (values.size % 2 == 0) {
-        return (values[values.size / 2-1] + values[values.size/2])/2
+    return if (values.size % 2 == 0) {
+        (values[values.size / 2-1] + values[values.size/2])/2
 
     } else {
-       return values[values.size/2]
+        values[values.size/2]
     }
+}
+
+fun calculateNumberOfNotices(values: Array<Int>, pastDaysNumber: Int): Int {
+    val lastIndex = values.size-1
+    val startIndex = lastIndex - pastDaysNumber
+    if (startIndex >= 0) {
+        val m = median(values.sliceArray(startIndex..lastIndex-1))
+        if (values[lastIndex] >= 2 * m) {
+            return 1
+        }
+    }
+    return 0
+}
+
+fun activityNotifications(expenditure: Array<Int>, d: Int): Int {
+//    var c = 0
+//    var startIndex = expenditure.size-1
+//    while (startIndex - d >= 0) {
+//       c += calculateNumberOfNotices())
+//    }
+    return -1
 }
 
 fun main(args: Array<String>) {
