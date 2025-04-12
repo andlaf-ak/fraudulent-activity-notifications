@@ -20,15 +20,16 @@ import kotlin.sequences.*
 import kotlin.text.*
 
 fun medianForSubArray(values: Array<Int>, startIndex: Int, endIndex: Int): Int {
-    if (values.isEmpty()){
+    val sortedValues = values.sorted()
+    if (sortedValues.isEmpty()){
         return 0
     }
     val size = endIndex - startIndex + 1
     return if (size % 2 == 0) {
-        (values[startIndex + size / 2-1] + values[startIndex + size/2])/2
+        (sortedValues[startIndex + size / 2-1] + sortedValues[startIndex + size/2])/2
 
     } else {
-        values[startIndex + size/2]
+        sortedValues[startIndex + size/2]
     }
 }
 
@@ -39,7 +40,7 @@ fun median(values: Array<Int>): Int {
 fun calculateNumberOfNotices(values: Array<Int>, lastIndex: Int, pastDaysNumber: Int): Int {
     val startIndex = lastIndex - pastDaysNumber
     if (startIndex >= 0) {
-        val m = median(values.sliceArray(startIndex..lastIndex-1))
+        val m = medianForSubArray(values, startIndex, lastIndex - 1)
         if (values[lastIndex] >= 2 * m) {
             return 1
         }
@@ -54,7 +55,7 @@ fun activityNotifications(expenditure: Array<Int>, d: Int): Int {
        c += calculateNumberOfNotices(expenditure, startIndex, d)
         startIndex--
     }
-    return 0
+    return c
 }
 
 fun main(args: Array<String>) {
