@@ -2,7 +2,7 @@ import com.andrealaforgia.insertInSortedList
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
 
-class InsertionSortKtTest {
+class InsertionSortTest {
     @Test
     fun shouldInsertInSortedArray() {
         val values = mutableListOf(1, 2, 4, 5, 6)

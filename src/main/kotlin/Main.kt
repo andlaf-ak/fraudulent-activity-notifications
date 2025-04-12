@@ -20,6 +20,11 @@ import kotlin.ranges.*
 import kotlin.sequences.*
 import kotlin.text.*
 
+fun insertInSortedList(items: MutableList<Int>, newElement: Int) {
+    val index = items.binarySearch(newElement).let { if (it < 0) -it - 1 else it }
+    items.add(index, newElement)
+}
+
 fun medianForSubArray(values: List<Int>, startIndex: Int, endIndex: Int): Double {
     if (values.isEmpty()){
         return 0.0
