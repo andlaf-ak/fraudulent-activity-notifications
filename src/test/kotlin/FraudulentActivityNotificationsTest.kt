@@ -2,6 +2,7 @@ import com.andrealaforgia.activityNotifications
 import com.andrealaforgia.calculateNumberOfNotices
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
+import java.io.File
 
 class FraudulentActivityNotificationsTest {
     @Test
@@ -33,5 +34,25 @@ class FraudulentActivityNotificationsTest {
         val trailingDays = 4
         val activityNotificationsCount = activityNotifications(expenditure, trailingDays)
         assertEquals(0, activityNotificationsCount)
+    }
+
+    @Test
+    fun shouldReturnFraudulentActivityNotificatioNCountForVeryLargeInput() {
+        val (trailingDays, expenditure) = readFromFile("test_case_1.txt")
+
+        val result = activityNotifications(expenditure, trailingDays)
+
+        assertEquals(633, result)
+    }
+
+    private fun readFromFile(fileName: String): Pair<Int, Array<Int>> {
+        val file = File(javaClass.classLoader.getResource(fileName)!!.toURI())
+
+        val firstLine = file.readLines()[0].trimEnd().split(" ")
+        val n = firstLine[0].toInt()
+        val d = firstLine[1].toInt()
+
+        val expenditure = file.readLines()[1].trimEnd().split(" ").map { it.toInt() }.toTypedArray()
+        return Pair(d, expenditure)
     }
 }
