@@ -48,12 +48,13 @@ fun calculateNumberOfNotices(values: Array<Int>, lastIndex: Int, pastDaysNumber:
 }
 
 fun activityNotifications(expenditure: Array<Int>, d: Int): Int {
-//    var c = 0
-//    var startIndex = expenditure.size-1
-//    while (startIndex - d >= 0) {
-//       c += calculateNumberOfNotices())
-//    }
-    return -1
+    var c = 0
+    var startIndex = expenditure.size-1
+    while (startIndex - d >= 0) {
+       c += calculateNumberOfNotices(expenditure, startIndex, d)
+        startIndex--
+    }
+    return 0
 }
 
 fun main(args: Array<String>) {
